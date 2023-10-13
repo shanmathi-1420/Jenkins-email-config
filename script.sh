@@ -1,5 +1,5 @@
 #!/bin/bash
-NAME="John Doe"
+NAME="Shanmathi"
 echo "Welcome $NAME! This is a sample bash script file."
 
 for i in {1..5}; do
@@ -13,8 +13,8 @@ while [ $count -le 5 ]; do
 done
 
 if [ "$NAME" == "John Doe" ]; then
-    echo "The name is John Doe!"
+    echo "The name is Shanmathi!"
 else
-    echo "The name is not John Doe!"
+    echo "The name is not Shanmathi!"
 fi
 
