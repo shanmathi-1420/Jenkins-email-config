@@ -51,7 +51,7 @@ fi
       }
     } 
     stage('Gmail') { 
-      steps { emailext body: "*${currentBuild.currentResult}:* Job Name: ${env.JOB_NAME} || Build Number: ${env.BUILD_NUMBER}\nScript Output:\n${script.sh}\nMore information at: ${env.BUILD_URL}",
+      steps { emailext body: "*${currentBuild.currentResult}:* Job Name: ${env.JOB_NAME} || Build Number: ${env.BUILD_NUMBER}\nScript Output:\n${scriptoutput}\nMore information at: ${env.BUILD_URL}",
       subject: 'Declarative Pipeline Build Status', 
       to: 'shanmathivlr03@gmail.com' 
       }
