@@ -29,7 +29,7 @@ if [ "$NAME" == "John Doe" ]; then
 else
     echo "The name is Shanmathi!"
 fi
-'''
+''', returnStdout: true).trim()
         }
       }
     }
