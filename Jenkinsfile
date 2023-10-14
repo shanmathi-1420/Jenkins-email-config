@@ -1,13 +1,42 @@
 pipeline {
   agent any
 
+  pipeline {
+  agent any
+
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t my-flask .'
-        sh 'docker tag my-flask $DOCKER_BFLASK_IMAGE'
+        script {
+          // Your Bash script here
+          sh '''
+#!/bin/bash
+NAME="Shanmathi"
+echo "Welcome $NAME! This is a sample bash script file."
+
+for i in {1..5}; do
+    echo "Iteration: $i"
+done
+
+count=1
+while [ $count -le 5 ]; do
+    echo "Count: $count"
+    count=$((count+1))
+done
+
+if [ "$NAME" == "John Doe" ]; then
+    echo "The name is Shanmathi!"
+else
+    echo "The name is not Shanmathi!"
+fi
+'''
+        }
       }
     }
+
+    // Rest of your pipeline stages
+  }
+
     /* stage('Test') {
       steps {
         sh 'docker run my-flask python -m pytest app/tests/'
