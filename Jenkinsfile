@@ -9,7 +9,7 @@ pipeline {
       steps {
         script {
           // Your Bash script here
-          sh '''
+          def scriptOutput = sh(script: '''
 #!/bin/bash
 NAME="Shanmathi"
 echo "Welcome $NAME! This is a sample bash script file."
@@ -30,6 +30,8 @@ else
     echo "The name is Shanmathi!"
 fi
 ''', returnStdout: true).trim()
+      //Store the script output in an environmental variable
+          env.SCRIPT_OUTPUT = scriptOutput
         }
       }
     }
@@ -51,7 +53,7 @@ fi
       }
     } 
     stage('Gmail') { 
-      steps { emailext body: "*${currentBuild.currentResult}:* Job Name: ${env.JOB_NAME} || Build Number: ${env.BUILD_NUMBER}\nScript Output:\n${scriptoutput}\nMore information at: ${env.BUILD_URL}",
+      steps { emailext body: "*${currentBuild.currentResult}:* Job Name: ${env.JOB_NAME} || Build Number: ${env.BUILD_NUMBER}\nScript Output:\n${env.SCRIPT_OUTPUT}\nMore information at: ${env.BUILD_URL}",
       subject: 'Declarative Pipeline Build Status', 
       to: 'shanmathivlr03@gmail.com' 
       }
