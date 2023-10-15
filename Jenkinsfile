@@ -25,7 +25,8 @@ if [ "$NAME" == "John Doe" ]; then
 else
     echo "The name is not Shanmathi!"
 fi
-''', returnStdout: true).trim()
+''', returnStdout: true script: 'pwd').trim()
+          println "scriptOutput = ${scriptOutput}
           env.SCRIPT_OUTPUT = scriptOutput
         }
       }
