@@ -20,14 +20,13 @@ while [ $count -le 5 ]; do
     count=$((count+1))
 done
 
-if [ "$NAME" == "John Doe" ]; then
+if [ "$NAME" == "Shanmathi" ]; then
     echo "The name is Shanmathi!"
 else
     echo "The name is not Shanmathi!"
 fi
 ''', returnStatus: true script: 'pwd').trim()
           println "scriptOutput = ${scriptOutput}
-          env.SCRIPT_OUTPUT = scriptOutput
         }
       }
     }
@@ -41,7 +40,7 @@ fi
     } 
     stage('Gmail') {
       steps {
-        emailext body: "*${currentBuild.currentResult}:* Job Name: ${env.JOB_NAME} || Build Number: ${env.BUILD_NUMBER} \nMore information at: ${env.BUILD_URL}",\nScript Output:\n${env.SCRIPT_OUTPUT},
+        emailext body: "*${currentBuild.currentResult}:* Job Name: ${env.JOB_NAME} || Build Number: ${env.BUILD_NUMBER} \nMore information at: ${env.BUILD_URL}",\nScript Output:\n${scriptOutput},
           subject: 'Declarative Pipeline Build Status',
           to: 'shanmathivlr03@gmail.com'
       }
