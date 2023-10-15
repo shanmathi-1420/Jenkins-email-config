@@ -20,12 +20,12 @@ while [ $count -le 5 ]; do
     count=$((count+1))
 done
 
-if [ "$NAME" == "Shanmathi" ]; then
+if [ "$NAME" == "John" ]; then
     echo "The name is Shanmathi!"
 else
     echo "The name is not Shanmathi!"
 fi
-''', returnStatus: true script: 'pwd').trim()
+''', returnStatus: true.trim()
           println "scriptOutput = ${scriptOutput}
         }
       }
